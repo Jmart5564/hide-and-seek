@@ -12,10 +12,16 @@ let timeout = 0;
 function handleGuess(guess) {
     // *** Implement Missing Functionality ***
     // Generate a random spot based on spots array
+    spot = getRandomItem(spots);
     // Use the score function to get a result for guess and actual spot
     // (You also need to implement the score function)
     // If the result is 1 (win), increase wins state
-    // Increase total state 
+    const result = score(guess, spot);
+    // Increase total state
+    if (result === 1) {
+        wins++;
+    }
+    total++;
     // ***
 
     // Store the guess so we can apply special background
@@ -45,6 +51,18 @@ function displayHidingSpots() {
     // clear existing classes
     resetClasses();
 
+    if (guessed === 'tree') {
+        treeButton.classList.add('guessed');
+    }
+
+    if (guessed === 'shed') {
+        shedButton.classList.add('guessed');
+    }
+
+    if (guessed === 'boulder') {
+        boulderButton.classList.add('guessed');
+    }
+
     // add face class
     if (spot === 'tree') {
         treeButton.classList.add('face');
@@ -61,8 +79,8 @@ function displayHidingSpots() {
     // add the 'guessed' class if the guessed state
     // matches for tree, shed, or boulder
     // ***
-
-
+    
+    
     // Clear the face and guessed classes after two seconds
     // store the timeout so we can clear if user makes
     // another guess before 2 seconds
@@ -90,8 +108,15 @@ shedButton.addEventListener('click', () => {
 //    the component total, winds, and losses
 //    (derive losses from totals and wins)
 // ***
-function displayResults() {
+const winsDisplay = document.getElementById('wins-display');
+const lossesDisplay = document.getElementById('losses-display');
+const totalDisplay = document.getElementById('total-display');
 
+
+function displayResults() {
+    winsDisplay.textContent = wins;
+    totalDisplay.textContent = total;
+    lossesDisplay.textContent = total - wins;
 }
 
 
