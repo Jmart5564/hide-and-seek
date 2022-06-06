@@ -14,10 +14,9 @@ function handleGuess(guess) {
     // Generate a random spot based on spots array
     spot = getRandomItem(spots);
     // Use the score function to get a result for guess and actual spot
-    score(guess);
     // (You also need to implement the score function)
     // If the result is 1 (win), increase wins state
-    const result = score(guessed, spot);
+    const result = score(guess, spot);
     // Increase total state
     if (result === 1) {
         wins++;
