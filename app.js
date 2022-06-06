@@ -17,7 +17,7 @@ function handleGuess(guess) {
     score(guess);
     // (You also need to implement the score function)
     // If the result is 1 (win), increase wins state
-    const result = score(guess, spot);
+    const result = score(guessed, spot);
     // Increase total state
     if (result === 1) {
         wins++;
@@ -68,8 +68,8 @@ function displayHidingSpots() {
     // add the 'guessed' class if the guessed state
     // matches for tree, shed, or boulder
     // ***
-
-
+    
+    
     // Clear the face and guessed classes after two seconds
     // store the timeout so we can clear if user makes
     // another guess before 2 seconds
@@ -97,8 +97,15 @@ shedButton.addEventListener('click', () => {
 //    the component total, winds, and losses
 //    (derive losses from totals and wins)
 // ***
-function displayResults() {
+const winsDisplay = document.getElementById('wins-display');
+const lossesDisplay = document.getElementById('losses-display');
+const totalDisplay = document.getElementById('total-display');
 
+
+function displayResults() {
+    winsDisplay.textContent = wins;
+    totalDisplay.textContent = total;
+    lossesDisplay.textContent = total - wins;
 }
 
 
