@@ -52,6 +52,18 @@ function displayHidingSpots() {
     // clear existing classes
     resetClasses();
 
+    if (guessed === 'tree') {
+        treeButton.classList.add('guessed');
+    }
+
+    if (guessed === 'shed') {
+        shedButton.classList.add('guessed');
+    }
+
+    if (guessed === 'boulder') {
+        boulderButton.classList.add('guessed');
+    }
+
     // add face class
     if (spot === 'tree') {
         treeButton.classList.add('face');
